@@ -5,18 +5,18 @@ import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import TabBarIcon from "../components/TabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
-import SearchScreen from "../screens/SearchScreen";
-import NotificationsScreen from "../screens/NotificationsScreen";
+import ReportScreen from "../screens/ReportScreen";
+import VitalsScreen from "../screens/VitalsScreen";
 import MessagesScreen from "../screens/Messages";
 
 const config = Platform.select({
   web: { headerMode: "screen" },
-  default: {}
+  default: {},
 });
 
 const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
+    Home: HomeScreen,
   },
   config
 );
@@ -28,64 +28,88 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={Platform.OS === "ios" ? "ios-home" : "md-home"}
     />
-  )
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: "#fff",
+    },
+    activeTintColor: "black",
+  },
 };
 
 HomeStack.path = "";
 
 const SearchStack = createStackNavigator(
   {
-    Search: SearchScreen
+    Search: ReportScreen,
   },
   config
 );
 
 SearchStack.navigationOptions = {
-  tabBarLabel: "Search",
+  tabBarLabel: "Report",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-search" : "md-search"}
+      name={Platform.OS === "ios" ? "paper-plane-outline" : "md-paper-plane"}
     />
-  )
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: "#fff",
+    },
+    activeTintColor: "black",
+  },
 };
 
 SearchStack.path = "";
 
 const NotificationsStack = createStackNavigator(
   {
-    Settings: NotificationsScreen
+    Settings: VitalsScreen,
   },
   config
 );
 
 NotificationsStack.navigationOptions = {
-  tabBarLabel: "Notifications",
+  tabBarLabel: "Vitals",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-notifications" : "md-notifications"}
+      name={Platform.OS === "ios" ? "ios-pulse-outline" : "md-pulse"}
     />
-  )
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: "#fff",
+    },
+    activeTintColor: "black",
+  },
 };
 
 NotificationsStack.path = "";
 
 const MessagesStack = createStackNavigator(
   {
-    Settings: MessagesScreen
+    Settings: MessagesScreen,
   },
   config
 );
 
 MessagesStack.navigationOptions = {
-  tabBarLabel: "Messages",
+  tabBarLabel: "Settings",
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === "ios" ? "ios-mail" : "md-mail"}
+      name={Platform.OS === "ios" ? "ios-settings-outline" : "md-settings"}
     />
-  )
+  ),
+  tabBarOptions: {
+    style: {
+      backgroundColor: "#fff",
+    },
+    activeTintColor: "black",
+  },
 };
 
 MessagesStack.path = "";
@@ -94,7 +118,7 @@ const tabNavigator = createBottomTabNavigator({
   HomeStack,
   SearchStack,
   NotificationsStack,
-  MessagesStack
+  MessagesStack,
 });
 
 tabNavigator.path = "";

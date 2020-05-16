@@ -1,11 +1,8 @@
 import React from "react";
 import { View, Text } from "react-native";
+import MyCountryPicker from "../components/CountryPicker";
 
 export default function MessagesScreen() {
-  /**
-   * Go ahead and delete ExpoConfigView and replace it with your content;
-   * we just wanted to give you a quick view of your config.
-   */
   return (
     <View>
       <Text>MESSAGES GO HERE</Text>
@@ -14,5 +11,5 @@ export default function MessagesScreen() {
 }
 
 MessagesScreen.navigationOptions = {
-  title: "Messages"
+  title: "Messages",
 };
